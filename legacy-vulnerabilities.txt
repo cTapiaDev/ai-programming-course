@@ -1,0 +1,52 @@
+Resumen de vulnerabilidades encontradas en `modulo-1-fundamentos/taller/src/legacy-client.ts`
+
+1) Uso de API obsoleta / patrón mixto
+- Uso de `require('https')` con callbacks, envuelto manualmente en `Promise`.
+- Mezcla de callbacks y promesas dificulta razonamiento y manejo de errores.
+
+2) Sin timeouts ni cancelación
+- No usa `AbortController` ni límites de tiempo; peticiones pueden colgar indefinidamente.
+
+3) JSON.parse sin protección
+- `JSON.parse(data)` se ejecuta sin `try/catch`. JSON inválido provoca excepción no controlada.
+
+4) Silenciamiento de errores
+- En `req.on('error', ...)` se hace `resolve(null)`; el error se consume y el llamador recibe `null` en vez de una excepción. Esto oculta fallos.
+
+5) No validación de códigos HTTP
+- No se valida `res.statusCode`; respuestas 4xx/5xx tratadas como éxito.
+
+6) Falta manejo de errores del stream
+- No hay `res.on('error', ...)` ni protección contra streams corruptos.
+
+7) Sin límite de tamaño de respuesta
+- Concatenar todo el body en `data` sin límites puede conducir a OOM si la respuesta es muy grande.
+
+8) Inyección de path y falta de validación de entrada
+- `userId` se inserta directamente en la URL sin saneamiento.
+
+9) Registro insuficiente y pobremente informativo
+- `console.log("Error en la petición")` no registra el error real ni contexto.
+
+10) Exportación CommonJS sin tipos
+- `module.exports` sin typings; dificulta migración a TypeScript con `strict:true`.
+
+11) Ausencia de mecanismos de resiliencia
+- No hay Circuit Breaker, retries con backoff, ni límites de concurrencia.
+
+12) Recursos no liberados / abort no usado
+- No hay `req.abort()` en timeout ni gestión de cancelación.
+
+Impacto
+- Disponibilidad reducida: peticiones colgadas, fugas de memoria.
+- Observabilidad y respuesta a fallos: errores silenciosos que impiden alertas.
+- Seguridad: posible SSRF/inyección de rutas.
+- Mantenibilidad: código difícil de probar y migrar.
+
+Recomendaciones rápidas
+- Migrar a `fetch` nativo (Node 18+) y usar `AbortController`.
+- No silenciar errores: lanzar excepciones tipadas.
+- Validar `status` y parsear JSON con `try/catch`.
+- Implementar Circuit Breaker (CLOSED / OPEN / HALF-OPEN) y límites de tamaño de respuesta.
+- Añadir validación y saneamiento de inputs.
+- Reemplazar `module.exports` por `export` y tipar todo con `strict:true`.
