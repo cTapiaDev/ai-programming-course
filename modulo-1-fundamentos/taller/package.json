@@ -1,0 +1,17 @@
+{
+  "name": "taller-resilient-client",
+  "version": "1.0.0",
+  "description": "Resilient HTTP Client with Circuit Breaker",
+  "main": "dist/resilient-client.js",
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

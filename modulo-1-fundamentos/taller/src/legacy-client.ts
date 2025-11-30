@@ -8,11 +8,11 @@ function getUserData(userId) {
         // FALLO 3: Sin Tipos.
         const req = https.get(`https://api-externa.com/users/${userId}`, (res) => {
             let data = '';
-            
+
             // FALLO 4: Si el JSON viene roto, el JSON.parse explota sin catch.
             res.on('data', (chunk) => data += chunk);
-            res.on('end', () => resolve(JSON.parse(data))); 
-            
+            res.on('end', () => resolve(JSON.parse(data)));
+
         });
 
         req.on('error', (e) => {
