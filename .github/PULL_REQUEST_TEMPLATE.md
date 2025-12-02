@@ -1,7 +1,7 @@
 ## 📝 Reporte de Taller con IA
 
-**Módulo:** [1/2/3/4]
-**Nombre del Alumno:** [Tu Nombre]
+**Módulo:** 1
+**Nombre del Alumno:** Rodrigo Chamy Cruz
 
 ---
 
