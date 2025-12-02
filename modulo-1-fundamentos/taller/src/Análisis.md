@@ -1,4 +1,5 @@
 
+
 **Análisis con IA:**
 Perfecto, ahora puedo analizar las vulnerabilidades del archivo [
 legacy-client.ts
