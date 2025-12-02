@@ -4,6 +4,7 @@
 **Tiempo Estimado:** 40 minutos
 **Stack:** Node.js + TypeScript + IA assistant (Copilot/Claude/GPT)
 
+**NOMBRE ALUMNO: ISRAEL VERGARA**
 ---
 
 ## 🚨 El Escenario
