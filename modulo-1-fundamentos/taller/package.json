@@ -1,0 +1,17 @@
+{
+    "name": "taller",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/legacy-client.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "node src/legacy-client.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "typescript": "^5.0.0"
+    }
+}
