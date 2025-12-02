@@ -1,0 +1,17 @@
+{
+  "name": "ai-programming-course",
+  "version": "1.0.0",
+  "description": "Bienvenido al repositorio oficial de prácticas del curso. Este espacio está diseñado para simular un entorno de desarrollo profesional donde la Inteligencia Artificial actúa como tu *Pair Programmer* y Arquitecto Asistente.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
