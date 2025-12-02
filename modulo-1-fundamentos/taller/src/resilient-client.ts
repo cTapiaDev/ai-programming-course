@@ -217,3 +217,5 @@ export class ResilientClient {
         return this.failureCount;
     }
 }
+
+// cambios completos
