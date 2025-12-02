@@ -87,3 +87,81 @@ La IA debe implementar una máquina de estados manual (sin librerías externas):
 ---
 
 > *"Un Senior Developer no escribe código; describe arquitecturas para que la máquina escriba el código."*
+
+Prompt Utilizado 
+
+Actúa como un Senior Software Architect especializado en Node.js, TypeScript (strict: true), sistemas resilientes y diseño de máquinas de estados.
+
+Voy a migrar y refactorizar el archivo legacy-client.ts, que contiene un cliente HTTP heredado con múltiples vulnerabilidades.
+Quiero que me ayudes a generar un Cliente HTTP Resiliente con patrón Circuit Breaker implementado manualmente.
+
+Quiero que sigas EXACTAMENTE estas instrucciones:
+
+1.###OBJETIVO PRINCIPAL
+
+- Crear un nuevo archivo: src/resilient-client.ts
+- Que contenga una clase: ResilientClient
+- Esta clase debe: Estar escrita en TypeScript con strict:true.
+- Reemplazar el uso de https por fetch nativo (Node 18+).
+- Usar AbortController para timeouts.
+- Tener interfaces de tipado estrictas.
+- Manejar correctamente errores de red, JSON inválido y códigos HTTP inesperados.
+- Implementar un Circuit Breaker real, basado en una máquina de estados.
+
+2.###LÓGICA EXACTA DEL CIRCUIT BREAKER
+Debes implementar un Circuit Breaker manual, sin librerías externas.
+
+##Estados requeridos:
+
+##CLOSED
+- Flujo normal.
+- Cada error aumenta un contador interno.
+- Cuando ocurre el tercer fallo consecutivo, el breaker pasa a OPEN.
+
+##OPEN
+- Fail-Fast (NO llamar a la API externa).
+- Mantenerse 5 segundos.
+- Tras 5 segundos, permitir transición automática a HALF-OPEN.
+
+##HALF-OPEN
+- Permitir una petición de prueba.
+- Si la respuesta es exitosa → reset y volver a CLOSED.
+- Si falla → volver inmediatamente a OPEN.
+
+3.###RESTRICCIONES DURAS (DE CUMPLIMIENTO OBLIGATORIO)
+
+##Prohibido:
+- Escribir la comparación manual if (failures > 3) o equivalentes.
+- Usar librerías de resiliencia (opossum, axios-retry, etc.).
+- Usar clientes HTTP externos (axios, got, superagent, etc.).
+- Usar any o tipos implícitos.
+- Silenciar errores o devolver null.
+
+##Permitido:
+- Usar abstracciones creativas para gestionar umbrales (tablas, maps, reducers, funciones, etc.).
+- Generar pseudocódigo antes de generar código.
+- Reescribir toda la arquitectura, siempre en TypeScript.
+
+4.###ARCHIVOS QUE QUIERO GENERAR
+
+- legacy-vulnerabilities.txt
+→ Lista detallada de todas las vulnerabilidades encontradas en legacy-client.ts.
+
+- src/resilient-client.ts
+→ Implementación final del cliente resiliente.
+
+5.###REGLA DE INTERACCIÓN OBLIGATORIA
+
+#Cada vez que vayas a:
+- Crear un archivo nuevo
+- Modificar un archivo
+- Eliminar un archivo
+
+##Debes PEDIRME confirmación primero, mostrando el diff o el contenido propuesto.
+
+####TAREA INICIAL
+
+Primero:
+- Analiza el archivo legacy-client.ts.
+- Dame un listado claro de sus vulnerabilidades.
+- Espera mi confirmación antes de crear cualquier archivo.

@@ -1,0 +1,20 @@
+{
+  "name": "andrespalma",
+  "version": "1.0.0",
+  "description": "Bienvenido al repositorio oficial de prácticas del curso. Este espacio está diseñado para simular un entorno de desarrollo profesional donde la Inteligencia Artificial actúa como tu *Pair Programmer* y Arquitecto Asistente.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndresPSyntaxis/AndresPalma.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndresPSyntaxis/AndresPalma/issues"
+  },
+  "homepage": "https://github.com/AndresPSyntaxis/AndresPalma#readme"
+}
