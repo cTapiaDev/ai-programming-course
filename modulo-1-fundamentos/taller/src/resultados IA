@@ -1,0 +1,77 @@
+
+
+
+Perfecto, voy a generar la clase ResilientClient siguiendo todas las reglas y constraints especificados. Esta clase implementará el patrón Circuit Breaker con una máquina de estados manual para reemplazar el código legacy.
+
+Created
+resilient-client.ts
++222
+-0
+¡Perfecto! He generado la clase 
+ResilientClient
+ en el archivo [
+resilient-client.ts
+](file:///f:/Cursos/Curso%20IA/1%20clase/ai-programming-course/modulo-1-fundamentos/taller/src/resilient-client.ts).
+
+✅ Características Implementadas
+1. Stack Moderno (Mitigación de Vulnerabilidades 1, 2, 3, 6)
+✅ TypeScript estricto con interfaces claras (
+CircuitState
+, 
+ApiResponse
+, 
+ClientConfig
+)
+✅ fetch nativo de Node.js (sin require('https') ni librerías externas)
+✅ Timeout de 2000ms con AbortController y signal
+✅ Tipado completo de todos los parámetros y retornos
+2. Circuit Breaker - Máquina de Estados (Mitigación de Vulnerabilidad 8)
+✅ Estados: CLOSED, OPEN, HALF-OPEN
+✅ Propiedades: failureCount, lastFailureTime, resetTimeoutMs: 5000
+✅ Transiciones automáticas:
+CLOSED → OPEN: Cuando failureCount >= 3 (umbral)
+OPEN → HALF-OPEN: Después de 5000ms desde el último fallo
+HALF-OPEN → CLOSED: Petición de prueba exitosa
+HALF-OPEN → OPEN: Petición de prueba fallida
+3. Manejo Robusto de Errores (Mitigación de Vulnerabilidades 4, 5, 7)
+✅ Validación HTTP: Verifica response.ok (status 200-299)
+✅ Parsing JSON seguro: Con try-catch para manejar JSON malformado
+✅ Propagación de errores: Lanza excepciones apropiadas (nunca devuelve null)
+✅ Validación de entrada: Valida el parámetro userId
+✅ Manejo de timeout: Detecta y reporta timeouts específicamente
+4. Cumplimiento de Restricciones
+✅ Sin librerías externas: Solo APIs nativas de Node.js
+✅ Lógica encapsulada: La transición CLOSED → OPEN está en el método 
+onFailure()
+, no hay if (failureCount >= 3) explícito en el flujo principal
+5. Características Adicionales
+🔍 Método 
+getState()
+: Para debugging y monitoring del estado actual
+🔄 Método 
+reset()
+: Para resetear manualmente el circuito (útil en testing)
+⚙️ Configuración flexible: Constructor acepta configuración personalizada
+📦 Instancia por defecto exportada: resilientClient lista para usar
+🎯 Ejemplo de Uso
+typescript
+import { ResilientClient } from './resilient-client';
+
+const client = new ResilientClient({
+  baseUrl: 'https://api-externa.com',
+  requestTimeoutMs: 2000,
+  resetTimeoutMs: 5000
+});
+
+try {
+  const userData = await client.getUserData('123');
+  console.log('User data:', userData);
+} catch (error) {
+  console.error('Error:', error.message);
+}
+
+// Verificar estado del circuito
+console.log('Circuit state:', client.getState());
+El código está listo para reemplazar completamente el 
+legacy-client.ts
+ y cumple con todas las reglas especificadas en tu documento de constraints! 🚀
