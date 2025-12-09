@@ -1,0 +1,7 @@
+id,sku,product_name,category,stock,price,last_updated
+101,GM-001,Gaming Mouse Pro,Peripherals,45,59.99,2023-10-01
+102,KB-MECHANICAL,Mech Keyboard RGB,Peripherals,12,129.50,2023-09-15
+103,MN-4K-27,Ultra Monitor 4K,Screens,5,349.00,2023-11-20
+104,USB-C-HUB,Hub USB-C 7-in-1,Accessories,150,29.99,2023-10-05
+105,LAP-DEV-M2,Dev Laptop M2,Computers,8,1999.00,2023-11-01
+106,WEBCAM-HD,Streaming Webcam,Peripherals,0,79.99,2023-08-10
