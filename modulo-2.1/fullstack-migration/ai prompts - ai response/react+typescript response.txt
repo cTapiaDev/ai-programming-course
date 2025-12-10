@@ -1,0 +1,4 @@
+go mod init fullstack-migration
+go get github.com/gocarina/gocsv
+go get github.com/rs/cors
+go run main.go

@@ -1,0 +1,6 @@
+# Navega a la carpeta frontend-react
+cd frontend-react
+# Instala las dependencias
+npm install
+# Inicia el servidor de desarrollo
+npm run dev

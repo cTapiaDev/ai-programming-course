@@ -1,0 +1,26 @@
+# Prompt Backend: API en Go
+
+Actúa como un desarrollador experto en Go. Necesito que generes un backend contenido en un solo archivo `main.go`.
+
+1. Procesamiento de Datos (CSV y Concurrencia):
+- Al iniciar, la aplicación debe leer un archivo llamado `inventory.csv` ubicado en el directorio actual.
+- Librería externa: Usa una librería como `gocarina/gocsv` para mapear automáticamente las filas del CSV a un struct `InventoryItem`. Define los tags de CSV en el struct adecuadamente. No quiero lógica de parseo manual campo por campo.
+- Simulación de carga masiva: Implementa la lectura y conversión utilizando **goroutines y canales** para procesar las filas en paralelo.
+- Almacena el resultado final en un slice en memoria (variable global o estructura) para servirlo rápidamente.
+- Asegúrate de cerrar el archivo correctamente.
+
+2. Servidor HTTP:
+- Expón un servidor en el puerto `8080`.
+- Usa `net/http`. Puedes usar un router como `github.com/gorilla/mux` si simplifica el código.
+- Endpoint: Crea `GET /api/inventory` que devuelva el slice completo en formato JSON.
+- CORS: Implementa un middleware (usando un paquete como `github.com/rs/cors`) para permitir peticiones exclusivamente desde `http://localhost:3000`. No escribas los headers de CORS manualmente.
+
+3. General:
+- Maneja los errores de forma razonable (lectura, marshalling, etc.) devolviendo códigos HTTP apropiados.
+- Incluye al final del código las instrucciones `go get` necesarias para instalar las dependencias externas.
+
+
+## SEGUNDO PROMPT:
+
+[ESTO TRAS CREAR EL FRONTEND-REACT]
+ahora, actualiza InventoryItem en main.go para que coincida con el tipo de datos que se espera en el frontend.
