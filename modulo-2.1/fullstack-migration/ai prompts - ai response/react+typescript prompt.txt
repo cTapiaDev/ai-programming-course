@@ -1,0 +1,38 @@
+# Prompt Frontend: React + TypeScript
+
+Actúa como un desarrollador experto en React y TypeScript. Necesito construir un dashboard de inventario basado en los datos del backend.
+
+Tarea 1: Definición de Tipos
+Genera una interfaz estricta llamada `InventoryItem` inferida del siguiente JSON.
+Reglas: `price` y `stock` deben ser `number`. `last_updated` debe ser `string` o `Date`. Evita el uso de `any`.
+
+Ejemplo de JSON:
+```json
+[
+  { "id": "103", "sku": "MN-4K", "product_name": "Monitor", "category": "Screens", "stock": 5, "price": 349, "last_updated": "2023-11-20" },
+  { "id": "102", "sku": "KB-RGB", "product_name": "Keyboard", "category": "Peripherals", "stock": 0, "price": 120, "last_updated": "2023-09-15" }
+]
+
+
+Tarea 2: Componente InventoryDashboard.tsx Genera el componente en src/components/InventoryDashboard.tsx cumpliendo los siguientes requisitos:
+
+Lógica y Estado:
+- Importa la interfaz InventoryItem desde ../types/inventory.
+- Usa useState para: la lista completa de ítems, la lista filtrada y la categoría seleccionada.
+- Usa useEffect con dependencias vacías [] para hacer fetch a http://localhost:8080/api/inventory solo al montar.
+- Zero Logic Coding: Genera tú toda la lógica del fetch dentro del useEffect (async/await, manejo de errores y tipado de respuesta).
+- Genera dinámicamente la lista de categorías para el filtro basándote en los datos recibidos (ej. usando Set).
+
+UI y Renderizado:
+- Filtro: Un <select> con las categorías encontradas y una opción "Todas".
+- Tabla: Muestra las columnas: Name, Category, Price, Stock, Last Updated.
+- Estilos: Usa Tailwind CSS (o CSS plano limpio).
+- Regla Visual: Si stock === 0, la fila o la celda de stock debe mostrarse con estilo de alerta (ej. texto rojo y negrita).
+
+Restricciones:
+- No uses librerías de gestión de estado global.
+- Exporta el componente por defecto.
+
+## SEGUNDO PROMPT:
+
+Además, genera el package.json con las dependencias necesarias (react, typescript, tailwindcss, etc.)
